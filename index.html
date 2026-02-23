@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sp33dy.net — AI Ops That Ship</title>
+  <meta name="description" content="Sp33dy.net builds AI-powered operators that hunt opportunities, automate execution, and ship measurable outcomes." />
+  <meta property="og:title" content="Sp33dy.net — AI Ops That Ship" />
+  <meta property="og:description" content="From lead hunting to reporting pipelines, our sub-agents execute with speed and strategy." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0f1f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b16;
+      --panel: #0f172a;
+      --text: #e6ecff;
+      --muted: #95a3c7;
+      --primary: #22d3ee;
+      --accent: #a78bfa;
+      --good: #34d399;
+      --line: #1d2948;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #1d4ed855 0%, transparent 60%),
+        radial-gradient(900px 450px at 90% -20%, #7c3aed44 0%, transparent 55%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: #070b16bb;
+      border-bottom: 1px solid #1b2643;
+      z-index: 50;
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
+    .logo {
+      font-weight: 800;
+      letter-spacing: .3px;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: linear-gradient(135deg,var(--primary),var(--accent)); box-shadow: 0 0 18px #22d3ee88; }
+
+    .hero { padding: 88px 0 56px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4.3vw, 3.8rem);
+      line-height: 1.07;
+      letter-spacing: -1px;
+    }
+    .sub { color: var(--muted); font-size: clamp(1rem, 1.7vw, 1.18rem); max-width: 62ch; }
+
+    .actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px 16px;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #60a5fa);
+      color: #04101e;
+      box-shadow: 0 8px 30px #22d3ee55;
+    }
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .btn-ghost {
+      color: var(--text);
+      border-color: #2a3a64;
+      background: #0f1830;
+    }
+    .btn-ghost:hover { border-color: #3a4e84; background: #122040; }
+
+    .card {
+      background: linear-gradient(180deg, #101a33, #0c1428);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 20px 60px #00000055;
+    }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 16px; }
+    .stat { background: #0c1428; border: 1px solid #26365f; border-radius: 12px; padding: 12px; }
+    .stat b { font-size: 1.1rem; }
+    .stat small { color: var(--muted); display: block; }
+
+    section { padding: 26px 0; }
+    h2 { font-size: clamp(1.4rem, 2.2vw, 2rem); margin-bottom: 8px; }
+    .section-note { color: var(--muted); margin-bottom: 16px; }
+
+    .features { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .feature { background: #0b1327; border: 1px solid #21325a; border-radius: 14px; padding: 16px; }
+    .feature h3 { margin: 0 0 6px; font-size: 1rem; }
+    .feature p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    .workflow { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    .step { border: 1px solid #2a3c68; border-radius: 12px; padding: 14px; background: #0c152c; }
+    .step b { display: inline-block; margin-bottom: 6px; color: #bfdbfe; }
+
+    .cta { margin: 24px 0 50px; }
+    .cta .card { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+    footer { border-top: 1px solid #1b2643; color: var(--muted); padding: 18px 0 30px; font-size: .92rem; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .workflow { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .workflow { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo"><span class="dot"></span> Sp33dy.net</div>
+      <a class="btn btn-ghost" href="mailto:sp33dy.solution@gmail.com">Contact</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>AI operators that find opportunities and ship outcomes.</h1>
+          <p class="sub">
+            Sp33dy.net deploys focused sub-agents for growth, research, automation, and delivery — so you spend less time in busywork and more time closing wins.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:sp33dy.solution@gmail.com?subject=Sp33dy%20Project%20Inquiry">Start a Project</a>
+            <a class="btn btn-ghost" href="#capabilities">See Capabilities</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 6px;">Sub-Agent Snapshot</h3>
+          <p style="margin:0;color:var(--muted)">Built for speed + strategy in real execution environments.</p>
+          <div class="stat-grid">
+            <div class="stat"><b>24/7</b><small>research cycles</small></div>
+            <div class="stat"><b>Fast</b><small>proposal drafting</small></div>
+            <div class="stat"><b>Multi-channel</b><small>Telegram-first delivery</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities">
+      <h2>What Sp33dy sub-agents can do</h2>
+      <p class="section-note">Productized execution with clear deliverables, timelines, and strategic leverage.</p>
+      <div class="features">
+        <article class="feature">
+          <h3>Competitive Intelligence</h3>
+          <p>Daily/weekly market scans, feature-gap mapping, sentiment trends, and strategic build-next recommendations.</p>
+        </article>
+        <article class="feature">
+          <h3>Revenue Pipeline Ops</h3>
+          <p>Lead discovery, qualification, proposal drafts, opportunity scorecards, and close-focused execution loops.</p>
+        </article>
+        <article class="feature">
+          <h3>Content & Launch Systems</h3>
+          <p>Landing page copy, SEO structures, messaging frameworks, and automated publishing workflows.</p>
+        </article>
+        <article class="feature">
+          <h3>Automation Buildouts</h3>
+          <p>Zapier/Make automation plans, CRM hygiene flows, reporting dashboards, and repeatable SOPs.</p>
+        </article>
+        <article class="feature">
+          <h3>Client Reporting</h3>
+          <p>Telegram-friendly executive reports with KPI snapshots, risks, recommendations, and next actions.</p>
+        </article>
+        <article class="feature">
+          <h3>Strategic Product Support</h3>
+          <p>Feature prioritization, UX improvement opportunities, and high-leverage roadmap guidance.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>How the system runs</h2>
+      <p class="section-note">A practical operating loop focused on measurable outcomes.</p>
+      <div class="workflow">
+        <div class="step"><b>01. Discover</b><div>Scan opportunities, trends, and intent signals.</div></div>
+        <div class="step"><b>02. Qualify</b><div>Filter by fit, ROI, risk, and execution viability.</div></div>
+        <div class="step"><b>03. Execute</b><div>Produce proposals, assets, and delivery plans fast.</div></div>
+        <div class="step"><b>04. Optimize</b><div>Track outcomes and improve the next cycle.</div></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="card">
+        <div>
+          <h2 style="margin:0 0 8px;">Need your own AI execution engine?</h2>
+          <p class="section-note" style="margin:0;max-width:65ch;">Get a focused setup for your business: strategy, automation, and reporting in one high-speed system.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:sp33dy.solution@gmail.com?subject=Build%20my%20Sp33dy%20AI%20Operator">Book Setup</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="y"></span> Sp33dy.net · Built for speed, strategy, and results.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
