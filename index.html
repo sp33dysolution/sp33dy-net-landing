@@ -67,7 +67,13 @@
       background: #0b1327;
     }
 
-    .hero { padding: 88px 0 56px; }
+    .hero { padding: 88px 0 56px; position: relative; }
+    .hero::before {
+      content: "";
+      position: absolute; inset: -40px -20px auto -20px; height: 320px;
+      background: radial-gradient(closest-side, #22d3ee22, transparent 70%), radial-gradient(closest-side, #a78bfa1a, transparent 70%);
+      pointer-events: none; z-index: -1;
+    }
     .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
@@ -138,6 +144,59 @@
 
     footer { border-top: 1px solid #1b2643; color: var(--muted); padding: 18px 0 30px; font-size: .92rem; }
 
+
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0 8px;
+    }
+    .trust-badge {
+      background: #0b1327;
+      border: 1px solid #21325a;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #c8d6fb;
+      font-size: .9rem;
+      text-align: center;
+    }
+
+    .lead-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .lead-form {
+      background: linear-gradient(180deg, #101a33, #0c1428);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .lead-form h3 { margin: 0 0 4px; }
+    .lead-form p { margin: 0 0 12px; color: var(--muted); }
+    .field { margin-bottom: 10px; }
+    .field label { display:block; font-size:.86rem; color:#c8d6fb; margin-bottom:6px; }
+    .field input, .field textarea, .field select {
+      width:100%;
+      background:#091022;
+      color:#e6ecff;
+      border:1px solid #2a3a64;
+      border-radius:10px;
+      padding:10px 11px;
+      font: inherit;
+    }
+    .field textarea{ min-height: 110px; resize: vertical; }
+    .field input:focus, .field textarea:focus, .field select:focus { outline:none; border-color:#60a5fa; box-shadow:0 0 0 3px #60a5fa22; }
+    .form-note { color: var(--muted); font-size: .85rem; margin-top: 8px; }
+
+    @media (max-width: 900px) {
+      .trust-strip { grid-template-columns: 1fr 1fr; }
+      .lead-wrap { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
       .features { grid-template-columns: 1fr; }
@@ -183,6 +242,15 @@
       </div>
     </section>
 
+    <section>
+      <div class="trust-strip">
+        <div class="trust-badge">⚡ Fast Turnaround</div>
+        <div class="trust-badge">🧠 Strategy-First</div>
+        <div class="trust-badge">🔒 Privacy Conscious</div>
+        <div class="trust-badge">📈 Outcome Focused</div>
+      </div>
+    </section>
+
     <section id="capabilities">
       <h2>What Sp33dy sub-agents can do</h2>
       <p class="section-note">Productized execution with clear deliverables, timelines, and strategic leverage.</p>
@@ -225,13 +293,53 @@
       </div>
     </section>
 
-    <section class="cta">
-      <div class="card">
-        <div>
+    <section class="cta" id="contact">
+      <div class="lead-wrap">
+        <div class="card">
           <h2 style="margin:0 0 8px;">Need your own AI execution engine?</h2>
-          <p class="section-note" style="margin:0;max-width:65ch;">Get a focused setup for your business: strategy, automation, and reporting in one high-speed system.</p>
+          <p class="section-note" style="margin:0 0 10px;max-width:65ch;">Get a focused setup for your business: strategy, automation, and reporting in one high-speed system.</p>
+          <ul style="margin:0;padding-left:18px;color:#c8d6fb;">
+            <li>Custom operator design for your niche</li>
+            <li>Offer + funnel strategy included</li>
+            <li>Execution roadmap within 48 hours</li>
+          </ul>
         </div>
-        <a class="btn btn-primary" href="mailto:sp33dy.solution@gmail.com?subject=Build%20my%20Sp33dy%20AI%20Operator">Book Setup</a>
+
+        <form class="lead-form" action="https://formsubmit.co/sp33dy.solution@gmail.com" method="POST">
+          <h3>Start Your Project</h3>
+          <p>Tell us what you need — we’ll reply with a plan.</p>
+
+          <input type="hidden" name="_subject" value="New Sp33dy.net Lead" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://sp33dy.net/?submitted=1" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required placeholder="you@company.com" />
+          </div>
+          <div class="field">
+            <label for="budget">Budget</label>
+            <select id="budget" name="budget">
+              <option value="Under $1k">Under $1k</option>
+              <option value="$1k-$5k">$1k-$5k</option>
+              <option value="$5k-$15k">$5k-$15k</option>
+              <option value="$15k+">$15k+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="project">Project goals</label>
+            <textarea id="project" name="project" required placeholder="What outcome are you trying to achieve?"></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit" style="width:100%;">Send Project Request</button>
+          <div class="form-note">Form routes directly to sp33dy.solution@gmail.com.</div>
+        </form>
       </div>
     </section>
   </main>
@@ -242,6 +350,13 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+    if (new URLSearchParams(location.search).get('submitted') === '1') {
+      const el = document.createElement('div');
+      el.style.cssText='position:fixed;bottom:16px;right:16px;background:#0f172a;border:1px solid #2a3a64;color:#d1fae5;padding:10px 12px;border-radius:10px;z-index:9999';
+      el.textContent='✅ Thanks — your request was sent.';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),5000);
+    }
   </script>
 </body>
 </html>
